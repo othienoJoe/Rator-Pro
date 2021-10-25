@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+{{block.super}}
+
+<div class="container"><br>
+
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<img class="rounded-circle account-img" src="{{user.image.url}}" style="width:100px; height:100px;">
+			<div class="media-body">
+				<h2 class="account-heading">{{ user.username }}</h2>
+				<p class="text-secondary">{{ user.email }}</p>
+				<p class="text-secondary">{{ user.profile.bio }}</p>
+			</div>
+			<div class="border-top pt-3">
+				<small class="text-black">
+					<a href="{% url 'update' %}">Update Profile Details</a>
+				</small>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
