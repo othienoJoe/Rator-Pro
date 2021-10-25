@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_form_tags %}
+{% block content %}
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6 mx-auto">
+				<div class="card card-signing flex-row my-5">
+
+					<div class="card-body">
+						<h5 class="card-title text-center">LOGIN</h5>
+						<hr>
+						<form method="POST" class="form-signing">
+							{% csrf_token %}
+							{{ form.as_p }}
+							<button class="btn btn-lg btn-info btn-block text-uppercase" type="submit">Login</button>
+							<a href="{% url 'register' %}" class="d-block text-center mt-2 small">Register</a>
+							<hr>
+						</form>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+	</div>
+</body>
+{% endblock %}
