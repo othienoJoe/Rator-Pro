@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+
+	<div class="col s12 m12">
+		<div class="card horizontal">
+
+			<div class="card-image">
+				<img src="{{ project.image.url }}" alt="">
+			</div>
+			<div class="card-stacked">
+				<div class="card-content">
+					<span class="card-title"><b>{{ project.title }}</b></span>
+					<span>{{ project.description }}</span>
+					<br>
+
+					<div class="divider"></div>
+					<p style="color: blue;">Rate My Project based on the Design, Usability and Content</p>
+					<br>
+					<form action="" method="post" role="form" class="col s12">
+						{ % csrf_token %}
+						<div class="input-field col s12">
+							{{ form.rate }}
+						</div>
+
+						<button class="waves-effect waves-light btn btn-info"><i class="material-icons left">Rate Me</i></button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

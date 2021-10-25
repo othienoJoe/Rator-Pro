@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load ratings %}
+
+{% for project in projects %}
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+<div class="card" style="width: 700px;">
+  <img src="{{ project.image.url }}" class="card-img-top" alt="..." style="width: 700px; height: 500px;">
+  <div class="card-body">
+    <h3 class="card-title">Project Title: {{ project.title }}</h3>
+
+    {% ratings project %}
+
+    <a href="{% url 'details' project.id %}" class="btn btn-primary">View Details</a>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock content %}

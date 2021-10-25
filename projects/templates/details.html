@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>The Project Details</h1>
+
+<div class="card mb-3">
+	<img src="{{ project.image.url }}" class="card-img-top" alt="...">
+	<div class="card-body">
+		<h5 class="card-title">Project Title: {{ project.title }}</h5>
+		<p class="card-text">Project Description:{{ project.description }}</p>
+		<p class="card-text">Project link: <a href="{{ project.link }}">Visit site</a></p>
+		
+		<p class="card-text">Ratings: {{ project.rating.rate }}</p>
+		<a href="{% url 'rate' project.id %}" class="btn btn-primary">Rate Me</a>
+		<p class="card-text"><small class="text-muted">Posted on {{ project.date_posted}}</small></p>
+	</div>
+</div>
+{% endblock content %}
