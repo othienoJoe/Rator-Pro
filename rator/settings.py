@@ -16,6 +16,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,11 +33,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Application definition
 
 INSTALLED_APPS = [
     'app',
+    'projects',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -91,7 +95,7 @@ DATABASES = {
     }
 }
 
-STAR_RATINGS_RANGE = 5
+STAR_RATINGS_RANGE = 6
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -130,8 +134,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Setting for configuration parameters globally
+cloudinary.config(
+    cloud_name = "nicothieno",
+    api_key = "138935826953116",
+    api_secret = "tWXKi8ktGfsF7bFwyEaPDc0U8Y8",
+)
+
+LOGIN_URL = '/'
+
+# Activate Django-Heroku
+django_heroku.settings(locals())
