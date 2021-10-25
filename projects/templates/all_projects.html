@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load cloudinary %}
+
+{% block content %}
+
+<h1>Post Project</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6 mx-auto">
+			<div class="card card-signin flex-row my-5">
+				
+				<div class="card-body">
+					<h5 class="card-title text-center">Post Project</h5>
+					<hr>
+					<form method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						{{ form | crispy }}
+						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
+						<hr>
+					</form>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 {% include 'navbar.html' %}
 {% load static %}
 {% load ratings %}
@@ -8,9 +9,51 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+
+	{% if title %}
+	  <title>{{ title }}</title>
+	{% else %}
+	  <title>Rator Pro</title>
+	{% endif %}
+
+	{% block styles %}
+	{% bootstrap_css %}
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	{% endblock %}
+
 </head>
 <body>
-	
+	{% block navbar %}
+	{% endblock navbar %}
+    <div class="container-fluid bg-secondary">
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+
+					{% if messages %}
+						{% for message in messages %}
+						<div class="alert alert-{{ message}}" role="alert" >
+							<h4 class="alert-heading">Well done!</h4>
+							<p>{{ message }}</p>
+							<hr>
+						</div>
+						{% endfor %}
+					{% endif %}
+
+          <!-- The content section -->
+					{% block content %}
+
+					{% endblock content %}
+
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+    </div>
+
+	<!-- The styling and re-structuring scripts -->
+	{% block scripts %}
+	{% bootstrap_javascript %}
+	{% endblock %}
+
 </body>
 </html>
