@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from cloudinary.models import CloudinaryField
 from django.contrib.contenttypes.fields import GenericRelation
-from .models import Rating
+from star_ratings.models import Rating
 from django.dispatch import receiver
 
 # Create your models here.
