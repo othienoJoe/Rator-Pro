@@ -35,7 +35,7 @@ def update(request):
 @login_required
 def profile_view(request):
 	profile = Profile.objects.get(user = request.user.id)
-	return render(request, 'user/profile.html')
+	return render(request, 'profile.html')
 
 # Updating the forms
 def update(request):
@@ -55,4 +55,4 @@ def update(request):
 		'u_form': u_form,
 		'p_form': p_form
 	}
-	return render(request, 'users/update.html', context)
+	return render(request, 'update.html', context)
