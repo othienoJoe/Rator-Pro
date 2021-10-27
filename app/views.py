@@ -19,7 +19,7 @@ def register_user(request):
 	context = {
 		'form': form
 	}
-	return render(request, 'user/register.html', context)
+	return render(request, 'register.html', context)
 
 @login_required
 def update(request):
